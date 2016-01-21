@@ -1,0 +1,16 @@
+Domains
+ilist=integer*
+Predicates
+intersect(ilist,ilist,ilist)
+member(integer,ilist)
+Clauses
+intersect([],_,[]).
+intersect([X|L],Set,[X|Z]):-
+member(X,Set),!,	
+intersect(L,Set,Z).
+intersect([X|L],Set,Z):-
+	not(member(X,Set)),
+intersect(L,Set,Z).
+member(Element,[Element|_]):-!.
+member(Element,[_|Tail]):-
+	member(Element,Tail).
