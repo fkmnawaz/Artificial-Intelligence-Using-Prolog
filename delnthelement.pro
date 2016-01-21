@@ -1,0 +1,16 @@
+Domains
+slist=symbol*
+ilist=integer*
+clist=char*
+rlist=real*
+Predicates
+deleten(slist,integer,slist)
+deleten(ilist,integer,ilist)
+deleten(clist,integer,clist)
+deleten(rlist,integer,rlist)
+Clauses
+deleten(L,0,L):-!.
+deleten([_|T],1,T):-!.
+deleten([H|T],N,[H|T1]):-
+N1=N-1,
+deleten(T,N1,T1).
